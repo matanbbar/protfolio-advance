@@ -1,6 +1,6 @@
+'use client'
 import Card from "@/components/Card";
 import SectionHeader from "@/components/SectionHeader";
-import StarIcon from "@/assets/icons/star.svg";
 import Image from 'next/image';
 
 import { IoLogoJavascript } from "react-icons/io";
@@ -26,6 +26,9 @@ import mapImage from "@/assets/images/map-kfar-yona.png";
 import smileEmoji from '@/assets/images/memoji-smile.png';
 import CardHeader from "@/components/CardHeader";
 import ToolboxItems from "@/components/ToolBoxItems";
+
+import { motion } from "framer-motion";
+import { useRef } from "react";
 
 const toolBoxItems = [
   { title: "React", iconType: FaReact },
@@ -86,8 +89,9 @@ const hobbies = [
 ]
 
 const AboutSection = () => {
+  const constraintRef = useRef(null);
   return (
-    <div className="pb-20 lg:py-28">
+    <section id="about-section" className="pb-20 lg:py-28">
       <div className="container">
         <SectionHeader
             eyebrow="About Me"
@@ -103,8 +107,8 @@ const AboutSection = () => {
                 description="Explore the technologies and tools use to craft exceptional digital experiences." 
                 className=""
               />
-              <ToolboxItems items={toolBoxItems} />
-              <ToolboxItems items={toolBoxItems} className="mt-6" itemsWrapperClassName=" -translate-x-1/2"/>
+              <ToolboxItems items={toolBoxItems} itemsWrapperClassName="animate-move-left [animation-duration:30s]" />
+              <ToolboxItems items={toolBoxItems} className="mt-6" itemsWrapperClassName="animate-move-right [animation-duration:35s]"/>
             </Card>
 
             <Card className="h-[320px] flex flex-col md:col-span-1 lg:col-span-2">
@@ -113,37 +117,43 @@ const AboutSection = () => {
                   description="Explore My Interests and hobbies beyond the digital realm."
                   className="px-6 py-6"
                 />
-                <div className="relative flex-1">
-                {hobbies.map((hobby) => (
-                    <div 
-                      key={hobby.title} 
-                      className="inline-flex items-center gap-2 px-6 
-                                bg-gradient-to-r from-emerald-300 to-sky-400 
-                                rounded-full py-1.5 absolute"
-                      style={{ left: hobby.left, top: hobby.top }}
-                    >
-                      <span className="font-medium text-gray-950">{hobby.title}</span>
-                      <span>{hobby.emoji}</span>
-                    </div>
-                  ))}
+                <div ref={constraintRef} className="relative flex-1">
+                  {hobbies.map((hobby) => (
+                      <motion.div 
+                        key={hobby.title} 
+                        className="inline-flex items-center gap-2 px-6 
+                                  bg-gradient-to-r from-emerald-300 to-sky-400 
+                                  rounded-full py-1.5 absolute"
+                        style={{ left: hobby.left, top: hobby.top }}
+                        drag
+                        dragConstraints={constraintRef}
+                        dragElastic={0.1}
+                      >
+                        <span className="font-medium text-gray-950">{hobby.title}</span>
+                        <span>{hobby.emoji}</span>
+                      </motion.div>
+                    ))}
                 </div>
             </Card>
  
             <Card className="h-[320px] relative md:col-span-2 lg:col-span-5">
                 <Image src={mapImage} alt="map" className="h-full w-full object-cover"/>
                 <div className="absolute sm:bottom-1/2 md:top-1/3 left-1/2 
-                                -translate-y-1/2 -translate-x-1/2 sm:size-10 md:size-20 rounded-full 
-                                bg-gradient-to-r from-emerald-300 to-sky-400 after:content-[''] 
-                                after:absolute after:inset-0 after:outline after:outline-2 
+                                -translate-y-1/2 -translate-x-1/2 sm:size-10 md:size-16 rounded-full 
+                                after:content-[''] after:absolute after:inset-0 after:outline after:outline-2 
                                 after:-outline-offset-2 after:rounded-full after:outline-gray-950/30">
-                  <Image src={smileEmoji} alt="smiling memoji" className="sm:size-10 md:size-20"/>
+
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-r from-emerald-300 to-sky-400 -z-20 animate-ping"></div>
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-r from-emerald-300 to-sky-400 -z-10"></div>
+                  <Image src={smileEmoji} alt="smiling memoji" className="sm:size-10 md:size-16"/>
+                  
                 </div>
             </Card>
             
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -1,6 +1,6 @@
 import smokeTalkLandingPage from "@/assets/images/smoke-talk.png";
 import sharonaAppImage from '@/assets/images/sharona-app.png';
-import Card from "@/components/ProjectCard";
+import ProjectCard from "@/components/ProjectCard";
 import SectionHeader from "@/components/SectionHeader";
 
 const portfolioProjects = [
@@ -33,20 +33,24 @@ const portfolioProjects = [
 ];
 
 const ProjectsSection = () => {
-  return <section className="pb-16 lg:py-24">
-    <div className="container">
-      <SectionHeader 
-        title="Featured Projects" 
-        eyebrow="Real-World Results"
-        description="See how I transformed concepts into engaging digital experiences." 
-      />
-      <div className="flex flex-col mt-10 gap-10 md:mt-20">
-        {portfolioProjects.map((project) => (
-          <Card key={project.title} project={project} />
-        ))}
+  return (
+    <section id="projects-section" className="pb-16 lg:py-24">
+      <div className="container">
+        <SectionHeader 
+          title="Featured Projects" 
+          eyebrow="Real-World Results"
+          description="See how I transformed concepts into engaging digital experiences." 
+        /> 
+        <div className="flex flex-col mt-10 gap-10 md:mt-20">
+          {portfolioProjects.map((project, projectIndex) => (
+            <ProjectCard key={project.title} project={project} style={{
+              top: `calc(64px + ${projectIndex * 40}px)`
+            }}/>
+          ))}
+        </div>
       </div>
-    </div>
-  </section>;
+    </section>
+  );
 };
 
 export default ProjectsSection;
