@@ -8,8 +8,8 @@ const inter = Inter({ subsets: ['latin'], variable: '--font-sans'});
 const calistoga = Calistoga({ subsets: ['latin'], variable: '--font-serif', weight: ["400"]});
 
 export const metadata: Metadata = {
-  title: "My Portfolio",
-  description: "Created with the help of Frontend Tribe",
+  title: "Matan Balestra",
+  description: "Matan Balestra's personal website",
 };
 
 export default function RootLayout({
@@ -20,7 +20,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <meta charSet="utf-8" />
-      <title>{'Matan Balestra'}</title>
       <link rel="icon" href="/memoji-computer.png" type="image/x-icon" />
       <body className={twMerge(inter.variable, calistoga.variable, "bg-gray-900 text-white antialiased font-sans")}>{children}</body>
     </html>
