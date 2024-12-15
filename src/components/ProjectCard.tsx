@@ -46,8 +46,8 @@ const ProjectCard = (props: IProps) => {
 
                 <a href={project.link}>
                     <button className="bg-white text-gray-950 h-12 w-full rounded-xl font-semibold inline-flex items-center justify-center gap-2 mt-8 md:w-auto md:px-6">
-                    <span>Visit Live Site</span>
-                    <ArrowUpRight className="size-4" />
+                        <span>Visit Live Site</span>
+                        <ArrowUpRight className="size-4" />
                     </button>
                 </a>
                 </div>

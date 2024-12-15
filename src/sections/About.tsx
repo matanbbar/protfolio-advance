@@ -29,6 +29,7 @@ import ToolboxItems from "@/components/ToolBoxItems";
 
 import { motion } from "framer-motion";
 import { useRef } from "react";
+import MyMap from "@/components/MyMap";
 
 const toolBoxItems = [
   { title: "React", iconType: FaReact },
@@ -123,7 +124,7 @@ const AboutSection = () => {
                         key={hobby.title} 
                         className="inline-flex items-center gap-2 px-6 
                                   bg-gradient-to-r from-emerald-300 to-sky-400 
-                                  rounded-full py-1.5 absolute"
+                                  rounded-full py-1.5 absolute cursor-pointer"
                         style={{ left: hobby.left, top: hobby.top }}
                         drag
                         dragConstraints={constraintRef}
@@ -137,17 +138,7 @@ const AboutSection = () => {
             </Card>
  
             <Card className="h-[320px] relative md:col-span-2 lg:col-span-5">
-                <Image src={mapImage} alt="map" className="h-full w-full object-cover"/>
-                <div className="absolute sm:bottom-1/2 md:top-1/3 left-1/2 
-                                -translate-y-1/2 -translate-x-1/2 sm:size-10 md:size-16 rounded-full 
-                                after:content-[''] after:absolute after:inset-0 after:outline after:outline-2 
-                                after:-outline-offset-2 after:rounded-full after:outline-gray-950/30">
-
-                  <div className="absolute inset-0 rounded-full bg-gradient-to-r from-emerald-300 to-sky-400 -z-20 animate-ping"></div>
-                  <div className="absolute inset-0 rounded-full bg-gradient-to-r from-emerald-300 to-sky-400 -z-10"></div>
-                  <Image src={smileEmoji} alt="smiling memoji" className="sm:size-10 md:size-16"/>
-                  
-                </div>
+              <MyMap />
             </Card>
             
           </div>
