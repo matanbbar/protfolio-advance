@@ -28,4 +28,7 @@ const MyMap = memo(() => {
     );
 });
 
+// Add a displayName for the memoized component
+MyMap.displayName = "MyMap";
+
 export default MyMap;
