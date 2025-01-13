@@ -1,20 +1,20 @@
 import smokeTalkLandingPage from "@/assets/images/smoke-talk.png";
+import wordleLandingPage from "@/assets/images/wordle-game-2.png";
 import sharonaAppImage from '@/assets/images/sharona-app.png';
 import ProjectCard from "@/components/ProjectCard";
 import SectionHeader from "@/components/SectionHeader";
 
 const portfolioProjects = [
   {
-    company: "Smoke Talk",
-    year: "2022",
-    title: "Ecommerce Digital Store",
+    company: "Wordle",
+    year: "2024",
+    title: "Wordle Game",
     results: [
-      { title: "Another channel for selling products" },
-      { title: "Increased sales by 25%" },
-      { title: "Increased customers cycle by 18%" }
+      { title: "The classic and known game Wordle" },
+      { title: "Implemented in English and Hebrew" },
     ],
-    link: "https://www.smoketalk.co.il",
-    image: smokeTalkLandingPage,
+    link: "https://wordle-game-english-hebrew.vercel.app/",
+    image: wordleLandingPage,
     isMobile: false
   },
   {
@@ -29,7 +29,20 @@ const portfolioProjects = [
     link: "",
     image: sharonaAppImage,
     isMobile: true
-  }
+  },
+  {
+    company: "Smoke Talk",
+    year: "2022",
+    title: "Ecommerce Digital Store",
+    results: [
+      { title: "Another channel for selling products" },
+      { title: "Increased sales by 25%" },
+      { title: "Increased customers cycle by 18%" }
+    ],
+    link: "https://www.smoketalk.co.il",
+    image: smokeTalkLandingPage,
+    isMobile: false
+  },
 ];
 
 const ProjectsSection = () => {
