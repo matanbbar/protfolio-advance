@@ -1,5 +1,5 @@
 import smokeTalkLandingPage from "@/assets/images/smoke-talk.png";
-import wordleLandingPage from "@/assets/images/wordle-game-2.png";
+import wordleLandingPage from "@/assets/images/wordle-game.png";
 import sharonaAppImage from '@/assets/images/sharona-app.png';
 import ProjectCard from "@/components/ProjectCard";
 import SectionHeader from "@/components/SectionHeader";
