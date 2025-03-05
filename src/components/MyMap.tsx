@@ -1,12 +1,12 @@
-import {APIProvider, Map, Marker, useMarkerRef} from '@vis.gl/react-google-maps';
+import { APIProvider, Map, Marker, useMarkerRef } from '@vis.gl/react-google-maps';
 import { useState, memo } from 'react';
 
-const MyMap = memo(() => {
+const MyMap = () => {
     const [markerRef] = useMarkerRef();
     const [isMapLoaded, setIsMapLoaded] = useState(false);
 
-    return(
-        <APIProvider apiKey={"AIzaSyAma4mELXSUw2f5jmJ_3c7vm8Cnp8zCqZM"} onLoad={() => setIsMapLoaded(true)}>
+    return (
+        <APIProvider apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || ''} onLoad={() => setIsMapLoaded(true)}>
             {!isMapLoaded && (
                 <div className="flex justify-center items-center h-full">
                     <div className="loader border-t-transparent border-solid border-4 border-blue-500 rounded-full w-8 h-8 animate-spin "></div>
@@ -22,13 +22,10 @@ const MyMap = memo(() => {
                 gestureHandling={'greedy'}
                 disableDefaultUI={true}
             >
-                <Marker ref={markerRef} position={{lat: 32.318099, lng: 34.933096}} />
+                <Marker ref={markerRef} position={{ lat: 32.318099, lng: 34.933096 }} />
             </Map>
         </APIProvider>
     );
-});
-
-// Add a displayName for the memoized component
-MyMap.displayName = "MyMap";
+};
 
 export default MyMap;

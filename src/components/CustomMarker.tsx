@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 
 interface CustomMarkerProps {
   map: google.maps.Map | null; // The map instance
@@ -7,23 +7,33 @@ interface CustomMarkerProps {
 }
 
 const CustomAdvancedMarker: React.FC<CustomMarkerProps> = ({ map, position, content }) => {
-  useEffect(() => {
-    if (!map || !content) return;
+  const markerRef = useRef<google.maps.marker.AdvancedMarkerElement | null>(null);
 
-    // Create an AdvancedMarkerElement
-    const marker = new google.maps.marker.AdvancedMarkerElement({
-      position,
-      map,
-      content, // Pass the DOM element directly
-    });
+  useEffect(() => {
+    if (!map || !content || !google?.maps?.marker?.AdvancedMarkerElement) return;
+
+    // Check if marker already exists, update instead of recreating
+    if (!markerRef.current) {
+      markerRef.current = new google.maps.marker.AdvancedMarkerElement({
+        position,
+        map,
+        content,
+      });
+    } else {
+      markerRef.current.position = position;
+      markerRef.current.map = map;
+    }
 
     return () => {
-      // Clean up the marker when the component unmounts
-      marker.map = null;
+      // Cleanup: Properly remove marker when component unmounts
+      if (markerRef.current) {
+        markerRef.current.map = null; // Detach from map
+        markerRef.current = null;
+      }
     };
   }, [map, position, content]);
 
-  return null;
+  return null; // This component doesn't render anything
 };
 
 export default CustomAdvancedMarker;
