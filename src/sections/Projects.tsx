@@ -1,6 +1,6 @@
 import smokeTalkLandingPage from "@/assets/images/smoke-talk.png";
 import wordleLandingPage from "@/assets/images/wordle.png";
-import sharonaAppImage from '@/assets/images/sharona-app.png';
+import sharonaAppImage from "@/assets/images/sharona-app.png";
 import ProjectCard from "@/components/ProjectCard";
 import SectionHeader from "@/components/SectionHeader";
 
@@ -15,12 +15,12 @@ const portfolioProjects = [
     ],
     link: "https://wordle-game-english-hebrew.vercel.app/",
     image: wordleLandingPage,
-    isMobile: false
+    isMobile: false,
   },
   {
     company: "Sharona Nails",
     year: "2023",
-    title: "CRM Management System",
+    title: "CRM System",
     results: [
       { title: "AI Chatbot for making appointments" },
       { title: "All the information is in the app" },
@@ -28,7 +28,7 @@ const portfolioProjects = [
     ],
     link: "",
     image: sharonaAppImage,
-    isMobile: true
+    isMobile: true,
   },
   {
     company: "Smoke Talk",
@@ -37,11 +37,11 @@ const portfolioProjects = [
     results: [
       { title: "Another channel for selling products" },
       { title: "Increased sales by 25%" },
-      { title: "Increased customers cycle by 18%" }
+      { title: "Increased customers cycle by 18%" },
     ],
     link: "https://www.smoketalk.co.il",
     image: smokeTalkLandingPage,
-    isMobile: false
+    isMobile: false,
   },
 ];
 
@@ -49,16 +49,20 @@ const ProjectsSection = () => {
   return (
     <section id="projects-section" className="pb-16 lg:py-24">
       <div className="container">
-        <SectionHeader 
-          title="Featured Projects" 
+        <SectionHeader
+          title="Featured Projects"
           eyebrow="Real-World Results"
-          description="See how I transformed concepts into engaging digital experiences." 
-        /> 
+          description="See how I transformed concepts into engaging digital experiences."
+        />
         <div className="flex flex-col mt-10 gap-10 md:mt-20">
           {portfolioProjects.map((project, projectIndex) => (
-            <ProjectCard key={project.title} project={project} style={{
-              top: `calc(64px + ${projectIndex * 40}px)`
-            }}/>
+            <ProjectCard
+              key={project.title}
+              project={project}
+              style={{
+                top: `calc(64px + ${projectIndex * 40}px)`,
+              }}
+            />
           ))}
         </div>
       </div>
